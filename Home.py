@@ -131,16 +131,16 @@ st.markdown("<div style='font-size:1.05em;margin-bottom: 1.0em;'>This interface 
 
 # ---------- MODEL SELECTION ----------
 model_files = {
-    "Logistic Regression": "logistic_regression_model.joblib",
-    "SVM": "support_vector_machine_model.joblib",
-    "Random Forest": "random_forest_model.joblib",
-    "KNN": "KNeighbors_model.joblib",
-    "Naive Bayes": "naive_bayes_model.joblib",
-    "Decision Tree": "decision_tree_model.joblib",
-    "XGBoost": "xgboost_model.joblib",
-    "AdaBoost": "adaboost_model.joblib",
-    "MultiLayerPerceptron": "neural_network_model.joblib",
-    "BayesianNetwork": "bayesian_network_model.joblib"
+    "Logistic Regression": "models/logistic_regression_model.joblib",
+    "SVM": "models/support_vector_machine_model.joblib",
+    "Random Forest": "models/random_forest_model.joblib",
+    "KNN": "models/KNeighbors_model.joblib",
+    "Naive Bayes": "models/naive_bayes_model.joblib",
+    "Decision Tree": "models/decision_tree_model.joblib",
+    "XGBoost": "models/xgboost_model.joblib",
+    "AdaBoost": "models/adaboost_model.joblib",
+    "MultiLayerPerceptron": "models/neural_network_model.joblib",
+    "BayesianNetwork": "models/bayesian_network_model.joblib"
 }
 
 st.markdown("<div class='radio-label'>Select a Model</div>", unsafe_allow_html=True)
@@ -149,7 +149,7 @@ selected_model_path = model_files[selected_model_name]
 
 # ---------- LOAD MODELS ----------
 classifier = load(selected_model_path)
-label_encoder = load("label_encoder.joblib")
+label_encoder = load("preprocessing/label_encoder.joblib")
 feature_extractor = MobileNetV2(weights="imagenet", include_top=False, pooling="avg", input_shape=(128, 128, 3))
 
 # ---------- IMAGE UPLOAD ----------
@@ -173,9 +173,9 @@ if uploaded_file:
 
         # ---------- BAYESIAN NETWORK LOGIC ----------
         if selected_model_name == "BayesianNetwork":
-            selector = load("selector.joblib")
-            discretizer = load("discretizer.joblib")
-            feature_cols = load("feature_cols.joblib")
+            selector = load("preprocessing/selector.joblib")
+            discretizer = load("preprocessing/discretizer.joblib")
+            feature_cols = load("preprocessing/feature_cols.joblib")
 
             features_reduced = selector.transform(features)
             features_discrete = discretizer.transform(features_reduced)
