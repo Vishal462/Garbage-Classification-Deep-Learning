@@ -61,4 +61,4 @@ For a full deep dive into the experimental setup, hyperparameter tuning, and det
 **"A Comparative Benchmark of Machine Learning Algorithms for Garbage Classification using Deep Feature Extraction"** 
 
 For detailed explanations of the project’s design, methodology, and results, please refer to the full paper:  
-[Download Research Paper](docs/ResearchPaper)
+[Download Research Paper](docs/ResearchPaper.pdf)
